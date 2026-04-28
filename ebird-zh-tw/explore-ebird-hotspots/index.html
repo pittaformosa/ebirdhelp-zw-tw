@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-TW" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>探索 eBird 熱門鳥點 | eBird 說明中心（繁體中文）</title>
+<meta name="description" content="全球有超過 450,000 個 eBird 熱門鳥點。本頁包含探索這些地點及貢獻資訊所需知道的一切。">
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f0f6fa;
+    color: #212121;
+    line-height: 1.7;
+  }
+  a { color: #0070b3; text-decoration: none; }
+  a:hover { color: #00609a; text-decoration: underline; }
+  img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
+
+  /* ===== Header ===== */
+  .site-header {
+    background: #ffffff;
+    border-bottom: 3px solid #228000;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .site-header__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 60px;
+  }
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #113245;
+    text-decoration: none;
+  }
+  .site-logo__icon {
+    width: 32px;
+    height: 32px;
+    background: #228000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .site-logo__icon svg { width: 18px; height: 18px; fill: #fff; }
+  .site-logo__zh { color: #228000; }
+  .header-badge {
+    margin-left: auto;
+    background: #e8f5e9;
+    color: #228000;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid #c8e6c9;
+    white-space: nowrap;
+  }
+
+  /* ===== Main Layout ===== */
+  .page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  /* ===== Breadcrumb ===== */
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+    font-size: 0.82rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #dde8f0;
+  }
+  .breadcrumb a { color: #0070b3; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb__sep { color: #aaa; margin: 0 0.15rem; }
+
+  /* ===== Article Header ===== */
+  .article-header { margin-bottom: 1.5rem; }
+  .article-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #113245;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .article-meta {
+    font-size: 0.82rem;
+    color: #888;
+    border-bottom: 2px solid #e0edf5;
+    padding-bottom: 1rem;
+  }
+
+  /* ===== Article Body ===== */
+  .article-body { background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .article-body p { margin-bottom: 0.9rem; }
+  .article-body p:empty, .article-body p br:only-child { margin-bottom: 0; display: none; }
+  .article-body h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #113245;
+    margin: 2rem 0 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #228000;
+  }
+  .article-body h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a4a6b;
+    margin: 1.5rem 0 0.6rem;
+  }
+  .article-body h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2a6045;
+    margin: 1.2rem 0 0.5rem;
+  }
+  .article-body ul, .article-body ol {
+    padding-left: 1.6rem;
+    margin-bottom: 0.9rem;
+  }
+  .article-body li { margin-bottom: 0.4rem; }
+  .article-body hr {
+    border: none;
+    border-top: 1px solid #dde8f0;
+    margin: 1.5rem 0;
+  }
+  .article-body strong { font-weight: 700; }
+  .article-body em { font-style: italic; color: #555; }
+
+  /* ===== Image Caption ===== */
+  .img-caption {
+    font-size: 0.83rem;
+    color: #666;
+    margin-top: 0.4rem;
+    margin-bottom: 0.9rem;
+    font-style: italic;
+  }
+  .article-body .image-container { margin: 0.5rem 0; }
+
+  /* ===== Callout Boxes ===== */
+  .fd-callout {
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    display: block;
+    white-space: normal;
+    font-family: inherit;
+  }
+  .fd-callout--note {
+    background: #e8f4fb;
+    border-left: 4px solid #0070b3;
+    color: #1a4060;
+  }
+  .fd-callout--note::before {
+    content: "📘 ";
+    font-style: normal;
+  }
+  .fd-callout--idea {
+    background: #e8f5e9;
+    border-left: 4px solid #228000;
+    color: #1a4020;
+  }
+  .fd-callout--idea::before {
+    content: "💡 ";
+    font-style: normal;
+  }
+
+  /* ===== Quick Links (TOC) ===== */
+  .toc-box {
+    background: #f0f8ff;
+    border: 1px solid #b3d9ef;
+    border-radius: 6px;
+    padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .toc-box h3 { font-size: 1rem; color: #113245; margin-bottom: 0.6rem; border: none; }
+  .toc-box ul { padding-left: 1.4rem; margin: 0; }
+  .toc-box li { margin-bottom: 0.3rem; font-size: 0.92rem; }
+
+  /* ===== Disclaimer ===== */
+  .disclaimer {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    color: #6d5c00;
+    line-height: 1.6;
+  }
+  .disclaimer strong { color: #5c4d00; }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    background: #113245;
+    color: #a8c4d4;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.82rem;
+    margin-top: 3rem;
+  }
+  .site-footer a { color: #7ec8e3; }
+  .site-footer a:hover { color: #fff; }
+  .site-footer__brand { font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .article-body { padding: 1.2rem; }
+    .article-title { font-size: 1.45rem; }
+    .article-body h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-logo" href="https://ebird.org" target="_blank" rel="noopener">
+      <span class="site-logo__icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 3L3 10.5l7.5 3L13.5 21 21 3z"/>
+        </svg>
+      </span>
+      eBird <span class="site-logo__zh">說明中心</span>
+    </a>
+    <span class="header-badge">繁體中文 非官方譯本</span>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-wrapper">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="麵包屑導覽">
+    <a href="https://support.ebird.org/en/support/solutions" target="_blank">說明首頁</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://support.ebird.org/en/support/solutions/48000298808" target="_blank">eBird</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="https://support.ebird.org/en/support/solutions/folders/48000697106" target="_blank">探索 eBird 資料</a>
+    <span class="breadcrumb__sep">›</span>
+    <span>探索 eBird 熱門鳥點</span>
+  </nav>
+
+  <!-- Article Header -->
+  <div class="article-header">
+    <h1 class="article-title">探索 eBird 熱門鳥點</h1>
+    <div class="article-meta">最後修改：2026 年 4 月 21 日　｜　原文：<a href="https://support.ebird.org/en/support/solutions/articles/48001280356-explore-ebird-hotspots" target="_blank" rel="noopener">Explore eBird Hotspots</a></div>
+  </div>
+
+  <!-- Article Body -->
+  <div class="article-body">
+
+    <p>您知道全球有超過 450,000 個 eBird 熱門鳥點嗎？本頁包含探索這些地點及貢獻資訊所需知道的一切。</p>
+
+    <!-- Quick Links -->
+    <div class="toc-box">
+      <h3>🔗 快速連結</h3>
+      <ul>
+        <li><a href="#what-is-hotspot">什麼是 eBird 熱門鳥點？</a></li>
+        <li><a href="#explore-hotspots">探索熱門鳥點</a></li>
+        <li><a href="#hotspot-groups">熱門鳥點群組</a></li>
+        <li><a href="#iconic-birds">代表鳥種</a></li>
+        <li><a href="https://support.ebird.org/support/solutions/articles/48001009443" target="_blank" rel="noopener">eBird 熱門鳥點常見問題</a></li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <!-- Section 1 -->
+    <h2 id="what-is-hotspot">什麼是 eBird 熱門鳥點？</h2>
+    <p>熱門鳥點是由 eBird 使用者推薦的協作賞鳥地點。熱門鳥點讓多位鳥人得以在同一個共享地點輸入資料，匯集的成果可透過 <a href="https://ebird.org/explore" target="_blank" rel="noopener">eBird 的「Explore」工具</a>查閱。</p>
+
+    <p>
+      <a href="https://ebird.org/hotspots" target="_blank" rel="noopener">
+        <img alt="依鳥種豐富度著色的 eBird 熱門鳥點全球地圖" src="./Explore eBird Hotspots _ Help Center_files/pNqnxBL9YxdsIcaorJUbpFIwv2DByHKyVg.jpeg" style="max-height:343px;">
+      </a>
+    </p>
+
+    <h3 id="hotspot-vs-personal">eBird 熱門鳥點與個人地點有何差異？</h3>
+    <p>eBird 熱門鳥點是對所有人公開的公共地點；個人地點則只有特定人員可以存取。</p>
+
+    <h4>eBird 熱門鳥點</h4>
+    <ul>
+      <li><strong>地圖上：</strong>以帶火焰圖示的大圖釘標示</li>
+      <li><strong>紀錄清單上：</strong>地點名稱顯示為藍色連結</li>
+      <li><strong>建立方式：</strong>須由鳥人建議，並經志工 eBird 熱門鳥點管理員審核通過</li>
+      <li><strong>管理：</strong>只能由 eBird 熱門鳥點管理員移動或重新命名</li>
+      <li><strong>使用：</strong>任何人在選擇地點時均可使用</li>
+    </ul>
+
+    <h4>個人地點</h4>
+    <ul>
+      <li><strong>地圖上：</strong>以無圖示的小圖釘標示</li>
+      <li><strong>紀錄清單上：</strong>地點名稱顯示為黑色、未加連結的文字</li>
+      <li><strong>建立方式：</strong>任何人均可在提交紀錄清單過程中建立</li>
+      <li><strong>管理：</strong>可由地點建立者<a href="https://support.ebird.org/support/solutions/articles/48000850891" target="_blank" rel="noopener">移動、合併及重新命名</a></li>
+      <li><strong>使用：</strong>只能由地點建立者及持有該地點共用紀錄清單者使用</li>
+    </ul>
+
+    <p><em>有關 eBird 熱門鳥點與個人地點差異的更多資訊，請參閱：<a href="https://support.ebird.org/support/solutions/articles/48001009443#anchorPersonalvsHotspot" target="_blank" rel="noopener">什麼時候應使用熱門鳥點而非個人地點？</a></em></p>
+
+    <hr>
+
+    <!-- Section 2 -->
+    <h2 id="explore-hotspots">探索熱門鳥點</h2>
+    <p>探索 <a href="https://support.ebird.org/support/solutions/articles/48001009443" target="_blank" rel="noopener">eBird 熱門鳥點</a>有三種主要方式：</p>
+
+    <ol>
+      <li>在 eBird.org 網站上，開啟 <a href="https://ebird.org/explore" target="_blank" rel="noopener">Explore 頁面</a>，點選「<a href="https://ebird.org/hotspots" target="_blank" rel="noopener">Explore Hotspots</a>」。</li>
+      <li>使用「Explore Regions」搜尋任何縣市、州省或國家，再從導覽選單點選 Hotspots。</li>
+      <li>透過 <a href="https://support.ebird.org/support/solutions/articles/48001255129#eBird-Mobile-Explore" target="_blank" rel="noopener">eBird Mobile Explore</a> 在行動裝置上探索 eBird 熱門鳥點。</li>
+    </ol>
+
+    <pre class="fd-callout fd-callout--note"><strong>eBird 熱門鳥點與<a href="https://support.ebird.org/support/solutions/articles/48001255129" target="_blank" rel="noopener">區域 Explore 頁面</a>共享許多相同功能</strong>，包括鳥種列表、插圖紀錄清單、近期造訪紀錄及 Top eBirders 排行榜。請參閱<a href="https://support.ebird.org/en/support/solutions/articles/48001255129" target="_blank" rel="noopener">在 eBird 中探索區域</a>，了解這些共享功能的詳細說明。</pre>
+
+    <hr>
+
+    <!-- Section 3 -->
+    <h2 id="hotspot-groups">熱門鳥點群組</h2>
+    <p>eBird 熱門鳥點群組將同一共享區域內的多個獨立熱門鳥點組織在一起。</p>
+
+    <p>舉例來說，一座州立公園或野生動物保護區可能有幾個絕佳的賞鳥地點——例如自然步道、遊客中心和草甸觀景台。這些熱門鳥點可以合併成一個熱門鳥點群組，以代表整個區域的單一地點呈現，而不必將它們視為完全獨立的地方。</p>
+
+    <p>
+      <a href="https://ebird.org/hotspot/L11814781" target="_blank" rel="noopener">
+        <img src="./Explore eBird Hotspots _ Help Center_files/DESN9l1G8zzCrNrY7ihiKDO_wA6KJ8NxZw.png" alt="熱門鳥點群組概覽頁面" style="max-width:591px;">
+      </a>
+    </p>
+    <p class="img-caption">上圖：群組概覽頁面含有該群組內所有熱門鳥點的地圖。</p>
+
+    <p>每個熱門鳥點一次只能隸屬於一個群組，每個熱門鳥點群組都有一個「母地點」——代表整個群組的概覽頁面。您可以直接向概覽地點提交紀錄清單，但僅在您賞鳥的區域沒有更精確地點可選用時才這樣做。</p>
+
+    <h4>內容與功能</h4>
+    <p>群組概覽的<strong>「關於」</strong>頁面描述整個區域的概況。該頁面的部分內容會顯示在群組內每個獨立熱門鳥點頁面上。請在概覽頁面的內容區塊填寫適用於整個區域的資訊，例如開放時間、票價及管理單位資訊。</p>
+
+    <p><strong>功能</strong>區塊是每個獨立熱門鳥點專屬的。群組概覽上的功能應反映整個區域的普遍情況。例如，若群組中至少有一個熱門鳥點設有公共廁所，請在群組概覽的「廁所」欄位選擇「是」；再依各個具體地點是否設有廁所，分別選擇「是」或「否」。（詳見<a href="https://support.ebird.org/support/solutions/articles/48001281732#Hotspot-Features" target="_blank" rel="noopener">熱門鳥點功能</a>）</p>
+
+    <p>
+      <a href="https://ebird.org/hotspot/L2559161/hotspots" target="_blank" rel="noopener">
+        <img alt="eBird 熱門鳥點群組排行榜" src="./Explore eBird Hotspots _ Help Center_files/2qgiEw1hhwu0mW5-myO3IunVWFCGiq4iRQ.png" style="max-height:340px;">
+      </a>
+    </p>
+
+    <p class="img-caption">上圖：群組概覽頁面的「Hotspots」區塊顯示群組內各熱門鳥點的紀錄清單數量與鳥種回報數排行榜。在 <a href="http://ebird.org/hotspot/L2559161" target="_blank" rel="noopener">Port of Brisbane</a>，<a href="https://ebird.org/hotspot/L1367805" target="_blank" rel="noopener">Swan Lake</a> 的觀察鳥種最多，但 <a href="https://ebird.org/hotspot/L984917" target="_blank" rel="noopener">Shorebird Roost</a> 的造訪頻率更高。</p>
+
+    <h4>資料彙整</h4>
+    <p>母地點會彙整群組內所有熱門鳥點的資料。母地點的統計數據代表整個群組的綜合資料，包括直接提交至母地點的公開紀錄清單。母熱門鳥點頁面作為群組概覽，匯總群組內所有熱門鳥點的紀錄清單提交情況。同樣地，排行榜依據所有熱門鳥點的合併活動顯示頂尖貢獻者。</p>
+
+    <p>群組概覽整合了群組內所有熱門鳥點的資料。群組概覽頁面上的統計數據——鳥種總數、紀錄清單數量及 Top 100 排名——代表整個群組的綜合資料，包括直接提交至群組概覽地點的公開紀錄清單。</p>
+
+    <pre class="fd-callout fd-callout--idea"><strong>專業建議：最大化您的賞鳥貢獻！</strong>探索熱門鳥點群組時，請從您造訪的每個獨立熱門鳥點分別提交紀錄清單。您的賞鳥活動將自動匯總至母熱門鳥點，提升整個群組的統計數據。這是對您賞鳥努力的額外肯定——您將同時獲得各獨立熱門鳥點<strong>及</strong>整體地點的賞鳥紀錄！</pre>
+
+    <h4>超大範圍區域</h4>
+    <p>某些區域範圍極廣，直接提交至概覽頁面的紀錄清單位置精度不足，無法用於科學分析，包括 eBird Status and Trends 模型。</p>
+
+    <p>例如，Yellowstone National Park 橫跨四個州，面積達 13,000 平方英里（33,700 平方公里）。從「Yellowstone National Park（一般區域）」回報鳥類，精度不足以供 eBird Status and Trends 模型使用。</p>
+
+    <p>對於此類區域，eBird Mobile 不會在「推薦地點」或附近地圖中顯示群組概覽熱門鳥點，引導您選擇群組內更具體的地點。</p>
+
+    <hr>
+
+    <!-- Section 4 -->
+    <h2 id="iconic-birds">代表鳥種</h2>
+    <p>eBird 熱門鳥點頁面上的代表鳥種（Iconic Birds），根據頻率相對於周邊區域（通常相當於縣或州/省），突顯出對特定地點最具代表性的鳥種。這有助於訪客快速了解每個熱門鳥點的獨特之處。若您在尋找特定鳥種，不妨從將其列為代表鳥種的熱門鳥點開始。</p>
+
+    <p>代表鳥種可以是在該地點常見且易於觀察的鳥種，也可能是極為罕見、並非每年都出現的鳥種。</p>
+
+    <p>代表鳥種通常分為三類：</p>
+    <ul>
+      <li><strong>局部分布鳥種</strong>（在該熱門鳥點定期出現，但在區域內其他地方較少見）→ 表示該熱門鳥點擁有獨特棲地</li>
+      <li><strong>罕見迷鳥</strong>（不可預期且出現頻率低，但仍<a href="#how-iconic-selected">符合納入條件</a>）→ 表示該地點可能以某些珍稀鳥種的定期出現聞名</li>
+      <li><strong>常見鳥種</strong>（在該熱門鳥點的回報頻率高於其他地點）→ 表示這是一個整體上可靠的賞鳥場所</li>
+    </ul>
+
+    <p>代表鳥種的長條圖和頻率數值有助於判斷特定鳥種或地點屬於哪個類別。</p>
+
+    <p>
+      <a href="./Explore eBird Hotspots _ Help Center_files/kU3TbiZjN_4zttt8RnccQf0qso21BE2zeg.png" target="_blank" rel="noopener">
+        <img alt="Lake Cochise 代表鳥種" src="./Explore eBird Hotspots _ Help Center_files/kU3TbiZjN_4zttt8RnccQf0qso21BE2zeg.png" style="max-width:594px;">
+      </a>
+    </p>
+
+    <p class="img-caption">上圖：<a href="https://ebird.org/hotspot/L266875/iconic-birds" target="_blank" rel="noopener">Willcox--Lake Cochise and Twin Lakes Golf Course</a> 是一個鹼性湖泊，擁有寬廣的湖岸線，也是 Arizona 州 Cochise County 少數常年有水的水域之一。此地大多數代表鳥種都與水域相關，顯示夏季是在此發現水鳥的最佳地點之一。圖表上較細的長條與高頻率數值表明，頂尖代表鳥種是反覆出現的珍稀鳥種——罕見程度足以吸引大批鳥人並產生大量紀錄，但又如此罕見以至於未曾在該縣其他地方有記錄。</p>
+
+    <h3 id="how-iconic-selected">代表鳥種如何選定？</h3>
+    <p>代表鳥種針對個別月份及所有月份的合併資料分別計算，僅使用過去 10 年的<a href="https://support.ebird.org/support/solutions/articles/48000967748#anchorCompleteChecklists" target="_blank" rel="noopener">完整紀錄清單</a>。代表鳥種將熱門鳥點的頻率與母區域的頻率進行比較。</p>
+
+    <p><strong>母區域</strong></p>
+    <p>在計算代表鳥種時，母區域（即周邊區域）是涵蓋該熱門鳥點的最細粒度地政區劃。</p>
+    <p>對於 eBird 中各州/省內設有縣或同等行政區的地區，母區域為縣級。</p>
+    <p>若最小行政區劃層級為州/省級，則以州/省為母區域。例如，<a href="https://ebird.org/region/UG/subregions" target="_blank" rel="noopener">Uganda 的四個行政區</a>下無縣級單位，因此所有代表鳥種均相對於其行政區的平均頻率計算（例如，<a href="https://ebird.org/hotspot/L1326093" target="_blank" rel="noopener">Royal Mile</a> 的母區域為 Western Uganda）。</p>
+    <p>少數地區（如 Aruba）無進一步的行政區劃，這些熱門鳥點的代表鳥種以整個國家作為母區域。</p>
+    <p>另一個例子：House Bunting 近年從北非向北殖民至歐洲。在 Spain 觀察 House Bunting 的最佳地點之一是 <a href="https://ebird.org/hotspot/L36336355/" target="_blank" rel="noopener">Algeciras--La Bajadilla</a>，House Bunting 位列其頂尖代表鳥種。Spain 有兩級行政區劃：自治區（相當於州/省）和省（相當於縣）。因此代表鳥種相對於省級計算。Algeciras--La Bajadilla 的母區域為 Cádiz 省。</p>
+
+    <p>
+      <a href="https://ebird.org/hotspot/L36336355/iconic-birds" target="_blank" rel="noopener">
+        <img src="./Explore eBird Hotspots _ Help Center_files/_Sm89uJDUkdkJAOuWcCKOEMup61uoG5YOA.png" alt="Algeciras--La Bajadilla 代表鳥種" style="max-width:570px;">
+      </a>
+    </p>
+    <p class="img-caption">House Bunting 在 <a href="https://ebird.org/hotspot/L36336355/" target="_blank" rel="noopener">Algeciras--La Bajadilla</a> 的觀察頻率是 Cádiz 省平均地點的 744 倍，顯然是這個熱門鳥點的特色鳥種！</p>
+
+    <h4 id="Multiple-Years-Criteria">多年標準</h4>
+    <p>代表鳥種必須在過去 10 年中，至少 30% 的有資料年份中有被回報紀錄。例如，若一個熱門鳥點：</p>
+    <ul>
+      <li>過去 10 年均有完整紀錄清單，則某鳥種至少須在其中 3 年中被回報（3/10 = 30%）</li>
+      <li>過去 10 年中有 4 年的資料，則某鳥種至少須在 2 年中被回報（2/4 = 50%）</li>
+      <li>過去 10 年中有 3 年的資料，則某鳥種只須在 1 年中被回報即可（1/3 = 33%）</li>
+      <li>過去 10 年中只有 1 年的資料，則任何鳥種均可能成為代表鳥種！（1/1 = 100%）</li>
+    </ul>
+
+    <pre class="fd-callout fd-callout--idea"><strong>一次性稀有記錄</strong>只有在該熱門鳥點過去 10 年中有造訪紀錄的年份為 3 年或更少時，才會出現在代表鳥種中。請參閱下方的低資料情境說明。</pre>
+
+    <h4 id="Frequency-Criteria">頻率標準</h4>
+    <p>代表鳥種根據觀察頻率進行選定和排序。頻率的計算方式為：以<a href="https://support.ebird.org/support/solutions/articles/48000967748#anchorCompleteChecklists" target="_blank" rel="noopener">完整紀錄清單</a>中該鳥種的觀察次數除以所選時間段的完整紀錄清單總數。</p>
+
+    <p>該數值再與整個母區域中該鳥種的平均頻率進行比較。只有熱門鳥點特定頻率大於區域平均頻率 1 倍的鳥種才會顯示在代表鳥種中，且數值越高，表示該鳥種越是該熱門鳥點的獨特物種。</p>
+
+    <p>頻率數值較低意味著該鳥種對該熱門鳥點並不特別獨特，通常也可以在該區域的多個其他熱門鳥點找到。</p>
+
+    <h3 id="How-often-are-Iconic-Birds-updated">代表鳥種多久更新一次？</h3>
+    <p>代表鳥種在每個新熱門鳥點建立時計算，之後會定期更新：</p>
+    <ul>
+      <li>至少每年一次（通常在年度鳥類分類更新後）</li>
+      <li>重大熱門鳥點變更後（例如地點移動或合併）</li>
+    </ul>
+
+    <h3 id="The-Iconic-Birds-section-is-empty">代表鳥種區塊是空白的。為什麼？</h3>
+    <p>您可能會看到以下訊息：</p>
+    <p><em>「尚無代表鳥種！提交完整紀錄清單以揭示此地點的獨特之處。請選擇其他時間段或地點。」</em></p>
+
+    <p>即使您知道所選時間段有完整紀錄清單，在最近一次代表鳥種更新<strong>之後</strong>提交的任何資料，都要等到下次更新才會顯示。</p>
+
+    <p>當所選月份沒有完整紀錄清單提交時，也會出現此訊息——可能是因為該熱門鳥點在該時間段無法進入，或極少有人造訪。</p>
+
+    <p>在大多數情況下，「所有月份」的資料會比個別月份資料更有參考價值。從熱門鳥點導覽選單點選「Iconic Birds」，即可查看其他季節的完整鳥種列表。</p>
+
+    <h3 id="Low-data-scenarios">低資料情境</h3>
+    <p>紀錄清單數量較少的地區應謹慎解讀。低資料的跡象包括：</p>
+    <ul>
+      <li>極端的頻率分數</li>
+      <li>長條圖中的空白（灰色區域）</li>
+      <li>所有鳥種的長條高度相近</li>
+      <li>所選時間段的完整紀錄清單為 20 筆或更少</li>
+      <li>資料來自單一觀察者</li>
+    </ul>
+
+    <p>您不應期望這些地點能提供高度準確的代表鳥種資訊。</p>
+
+    <p>儘管可靠性較低，代表鳥種仍可揭示有用的新興模式。例如，South Korea Ulsan 市的 <a href="https://ebird.org/hotspot/L3868136" target="_blank" rel="noopener">Ulsan--Myeongdeok Lake Park</a> 在 5 月份僅有兩筆紀錄清單，但仍能提供一些<a href="https://ebird.org/hotspot/L3868136/iconic-birds?m=5" target="_blank" rel="noopener">值得留意的有趣鳥種</a>——例如白腹琉璃（Blue-and-white Flycatcher）和三寶鳥（Dollarbird）。</p>
+
+    <p>再看這個 West Virginia 州 <a href="https://ebird.org/hotspot/L36302161" target="_blank" rel="noopener">Swallow-tailed Kite 的守候熱門鳥點</a>。它呈現出幾個低資料的跡象：長條圖不完整（大部分為灰色區域；藍色區域，例如 8 月下旬的 Horned Lark，表示該週有完整紀錄清單但無該鳥種的紀錄）且所有鳥種的長條高度相近。</p>
+
+    <p>Swallow-tailed Kite 在該地的出現頻率是區域平均的 889 倍，因為它是該縣的首筆記錄，該地點的所有紀錄清單都是在它短暫停留期間提交的，其他年份沒有任何資料。</p>
+
+    <p>鑑於其極度稀有性，一旦累積三年的資料，Swallow-tailed Kite 很可能從該地點的代表鳥種中消失。</p>
+
+    <p>
+      <a href="./Explore eBird Hotspots _ Help Center_files/HhNjKd_Gq6hUhazAytE7UyRZJ099QGAAFQ.png" target="_blank" rel="noopener">
+        <img alt="守候熱門鳥點的代表鳥種" src="./Explore eBird Hotspots _ Help Center_files/HhNjKd_Gq6hUhazAytE7UyRZJ099QGAAFQ.png" style="max-height:562px;">
+      </a>
+    </p>
+
+    <hr>
+
+    <pre class="fd-callout fd-callout--note">想了解更多？請至 <strong><a href="https://support.ebird.org/support/solutions/articles/48001009443" target="_blank" rel="noopener">eBird 熱門鳥點常見問題</a></strong> 查閱 eBird 熱門鳥點的更多資訊。</pre>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <strong>⚠️ 免責聲明：</strong>本頁為非官方繁體中文譯本，由獨立志工依據 eBird 說明中心原文翻譯，僅供參考。如與原文有任何出入，請以 <a href="https://support.ebird.org/en/support/solutions/articles/48001280356-explore-ebird-hotspots" target="_blank" rel="noopener">eBird 官方英文原文</a> 為準。eBird 為 Cornell Lab of Ornithology 的服務，本譯本與 Anthropic、Cornell Lab 或 eBird 官方無關聯。
+    </div>
+
+  </div><!-- /.article-body -->
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__brand">eBird 說明中心 繁體中文譯本</div>
+  <p>原文版權所有 © Cornell Lab of Ornithology &nbsp;|&nbsp; 本譯本採 CC BY-NC 4.0 授權</p>
+  <p style="margin-top:0.4rem;">
+    <a href="https://ebird.org" target="_blank" rel="noopener">eBird.org</a> &nbsp;|&nbsp;
+    <a href="https://support.ebird.org" target="_blank" rel="noopener">eBird Help Center</a> &nbsp;|&nbsp;
+    <a href="https://support.ebird.org/en/support/solutions/articles/48001280356-explore-ebird-hotspots" target="_blank" rel="noopener">英文原文</a>
+  </p>
+</footer>
+
+</body>
+</html>
